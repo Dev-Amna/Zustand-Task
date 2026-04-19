@@ -15,5 +15,18 @@ export const useTaskStore = create((set) => ({
     // Delete  Task
     DeleteTask: (id) => set((state) => ({
         tasks: state.tasks.filter((task) => task.id !== id),
+
     })),
+
+
+    // Toggle Click button
+    ToggleTask: (id) =>
+        set((state) => ({
+            tasks: state.tasks.map((t) =>
+                t.id === id ? { ...t, done: !t.done } : t
+            )
+
+        })),
+
+
 }))
