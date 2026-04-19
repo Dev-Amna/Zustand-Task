@@ -1,51 +1,236 @@
+body {
+  font-family: Arial, sans-serif;
+  /* background: #01184e; */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Container */
 .input-container {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
 }
 
-input {
-  border: 2px black solid;
+.input-container input {
+  flex: 1;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
 }
 
+.input-container button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.input-container button:hover {
+  background: #0ea5e9;
+}
+
+/* Filter buttons */
 .filterBtns {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
-button {
-  background-color: black;
+.filterBtns button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #1e293b;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filterBtns button:hover {
+  background: #334155;
+}
+
+/* Task list */
+.task-list {
+  width: 100%;
+  max-width: 500px;
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  background: #1e293b;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Title */
+.title {
+  margin: 0;
+}
+
+/* Buttons inside task */
+.task-list button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Delete */
+.task-list button:first-of-type {
+  background: blue;
+  color: white;
+}
+
+.task-list button:first-of-type:hover {
+  background: #dc2626;
+}
+
+/* Toggle */
+.task-list button:last-of-type {
+  background: blue  ;
+  color: white;
+}
+
+.task-list button:last-of-type:hover {
+  background: #16a34a;
+}
+
+/* Completed task */
+.task-list li.done .title {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE FIX ONLY */
+
+/* Tablets */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .input-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .input-container button {
+    width: 100%;
+  }
+
+  .filterBtns {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .task-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .task-list button {
+    margin-left: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .input-container input {
+    font-size: 14px;
+  }
+
+  .input-container button {
+    font-size: 14px;
+  }
+
+  .filterBtns button {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+
+  .task-list li {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 14px;
+    word-break: break-word;
+  }
+
+  .task-list button {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
+
+.filterBtns button {
+  background: transparent;
+  color: #cbd5e1;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 6px 12px;
+}
+
+.filterBtns button.active {
   color: white;
   font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  padding: 12px;
-  transition-duration: 0.4s;
 }
 
-button:hover {
-  background-color: #4CAF50;
-  color: white;
-
-}
-
-.task-list {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex-direction: column;
-
-}
-
-ul li {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.filterBtns button.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #38bdf8;
+  border-radius: 2px;
 }
