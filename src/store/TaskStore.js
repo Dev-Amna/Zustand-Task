@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const useTaskStore = create((set) => ({
     tasks: [],
 
-    // Add task Slice(like a global function ) 
+    // Add task  
     AddTask: (title) => set((state) => ({
         tasks: [...state.tasks, {
             id: Date.now(),
@@ -25,8 +25,6 @@ export const useTaskStore = create((set) => ({
             tasks: state.tasks.map((t) =>
                 t.id === id ? { ...t, done: !t.done } : t
             )
-
         })),
-
 
 }))

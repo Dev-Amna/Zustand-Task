@@ -35,13 +35,17 @@ function Task() {
         <div>
             <h2>Task Manger Zustand App</h2>
 
-            <input type='text' placeholder='Add an task here..' value={text} onChange={(e) => setText(e.target.value)} />
+          <div className='input-container'>
+              <input type='text' placeholder='Add an task here..' value={text} onChange={(e) => setText(e.target.value)} />
             <button onClick={handleAdd}>Add Task!</button>
+          </div>
 
-            <ul>
-                <button onClick={() => setFilter("all")}> All</button>
-                <button onClick={() => setFilter("completed")}> Completed!</button>
-                <button onClick={() => setFilter("pending")}> Pending..</button>
+            <ul className='task-list'>
+                <div className='filterBtns'>
+                    <button onClick={() => setFilter("all")}> All</button>
+                    <button onClick={() => setFilter("completed")}> Completed!</button>
+                    <button onClick={() => setFilter("pending")}> Pending..</button>
+                </div>
 
                 {filteredTasks.map((t) => {
                     return <>
